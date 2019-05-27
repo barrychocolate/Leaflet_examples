@@ -1,0 +1,100 @@
+---
+title: "Choropleth"
+author: "Barry Bullas"
+date: "27 May 2019"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE, echo=FALSE, warning =FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#Check if the required packages are installed, if not install them
+list.of.packages <- c("leaflet", "leaflet.extras", "DT")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+#Load required packages
+library(leaflet)
+library(leaflet.extras)
+library(DT)
+```
+
+# Chropleth maps
+
+A choropleth map is a thematic map in which areas are shaded or patterned in proportion to the measurement of the statistical variable being displayed on the map, such as population density or per-capita income.  In this exercise we are going to produce the map below.
+
+
+```{r }
+#Insert example of the finished choropleth map we will build
+```
+
+## Overview of this exercise
+
+1. Load polygon shape files
+2. Load a dataset
+3. Aggregate the dataset
+4. Join the aggregated dataset to the polgyons
+5. Visualise
+6. Finishing touches
+
+##Load polygon shape files
+
+Explanation of polygon shape files and where to to get them from.
+
+
+```{r}
+#Code to load the relevant shape files
+```
+
+## Load a dataset
+
+Explanation of the dataset used in the example
+
+```{r }
+
+#DataTable view to allow the user to explore the dataset
+```
+
+
+## Aggregate the dataset
+
+Aggregating the data to a shapefile level, for example agregating by postcode
+
+```{r}
+#Code to aggregate the data
+```
+
+## Join the aggregated dataset to the polgyons
+
+Join the aggregated data to the polygon
+
+```{r}
+#Code to join the data to the polygon
+```
+
+## Visualise
+
+Now we are ready to visualise the data by colouring each polygon.  Info on colourbrewer
+
+```{r}
+#Code to colour the polygons based on the value
+```
+
+## Finishing touches
+
+Adding legends, 
+
+```{r}
+#Adding legends to the map and other finishing touches
+```
+
+
+
+
+
+
+
+
