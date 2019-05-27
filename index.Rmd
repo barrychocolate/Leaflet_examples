@@ -1,6 +1,6 @@
 ---
 title: "Leaflet: An introduction to creating maps with leaflet"
-author: "Barry Bullarse and Anthony Foster"
+author: "Barry Bullas and Anthony Foster"
 date: "25 May 2019"
 output: 
   html_document:
