@@ -79,7 +79,7 @@ glimpse(uk_regions@data)
 
 ```
 
-If we added these polygons to a map now we would see the four countries of the UK.
+If we added these polygons to a map now we would see the nine regions of England.
 
 ```{r}
 #Create a map and add the polygons
