@@ -12,16 +12,12 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 
 #Check if the required packages are installed, if not install them
-list.of.packages <- c("leaflet", "leaflet.extras", "DT", "geojsonio", "rgdal", "dplyr")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
+list_of_packages <- c("leaflet", "leaflet.extras", "DT", "geojsonio", "rgdal", "dplyr", "rnaturalearth", "sp")
+new_packages <- list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
+if(length(new_packages)) install.packages(new_packages)
 
 #Load required packages
-library(leaflet)
-library(leaflet.extras)
-library(DT)
-library(geojsonio)
-library(dplyr)
+lapply(list_of_packages, library, character.only = TRUE)
 ```
 
 ***
@@ -46,7 +42,7 @@ A choropleth map is a thematic map in which areas are shaded or patterned in pro
 5. Visualise
 6. Finishing touches
 
-##Load Boundaries
+## Load Boundaries
 
 Boundaries are the shapes that make up the areas you wish to visualise.  The boudnaries could be the outline of countries, postcode areas, voting areas or any other geographical boudnary.  Explanation of polygon shape files and where to to get them from.
 
@@ -88,31 +84,6 @@ m <- leaflet(uk_regions) %>%
 
 #display the map
 m
-```
-
-***
-
-### Load from downloaded shape file
-
-To download the file, click on the Download menu and select Shapefile.  This will download a zip file containing 6 files.  
-
-![](img/ons_download.png)
-
-Extract the files to a suitbale location.
-
-```{r eval=FALSE}
-#read the data using the sf library, from the shp file downloaded from the ONS website
-#library(rgdal)
-
-#the dsn is the folder containing the files, the layer is the name of the shape file
-#uk_countries2 <- readOGR(dsn="C:/Analysis/R_Studio/Leaflet_examples/polygons", layer =  "Countries_December_2017_Super_Generalised_Clipped_Boundaries_in_Great_Britain")
-
-#Create a map and add the polygons
-#m <- leaflet(uk_countries2) %>%
-#  addPolygons()
-
-#display the map
-#m
 ```
 
 ***
@@ -203,6 +174,19 @@ Adding legends,
 
 ```{r}
 #Adding legends to the map and other finishing touches
+```
+
+## World Map
+
+```{r}
+#Get world countries vectors from rnaturalearth package
+my_world <- ne_download(scale = 50, type = 'countries', category = 'cultural')
+
+#Remove anartica
+no_penguins <- my_world[ my_world@data$SOVEREIGNT  != "Antarctica" ,] 
+m <- leaflet(data = no_penguins) %>%
+  addPolygons(stroke = .1, smoothFactor = 0.2, fillOpacity = 0)
+m
 ```
 
 
